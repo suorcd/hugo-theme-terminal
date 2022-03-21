@@ -5,6 +5,7 @@
     </div>
   {{ end }}
   <div class="posts">
+    {{ range first 5 (where .Data.Pages "Section" "in" (slice "tutorial" "news")) }} {{ .Title }} {{ end }}
     {{ $isntDefault := not (or (eq (trim $.Site.Params.contentTypeName " ") "posts") (eq (trim $.Site.Params.contentTypeName " ") "")) }}
     {{ $contentTypeName := cond $isntDefault (string $.Site.Params.contentTypeName) "posts" }}
 
